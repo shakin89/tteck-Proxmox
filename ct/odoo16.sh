@@ -21,7 +21,7 @@ EOF
 }
 header_info
 echo -e "Loading..."
-APP="Odoo 16"
+APP="odoo16"
 var_disk="4"
 var_cpu="1"
 var_ram="512"
@@ -52,6 +52,10 @@ function default_settings() {
   VLAN=""
   SSH="no"
   VERB="no"
+  additional_settings
+}
+
+function additional_settings() {
   if ADMINPW=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set Odoo Admin Password" 8 58 --title "ADMIN PASSWORD" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
     echo -e "${DGN}Chosen password: ${BGN}$ADMINPW${CL}"
   else
@@ -122,6 +126,10 @@ function exit-script() {
   clear
   echo -e "⚠  User exited script \n"
   exit
+}
+
+function advanced_settings() {
+  additional_settings
 }
 
 start
