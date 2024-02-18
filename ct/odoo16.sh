@@ -52,6 +52,42 @@ function default_settings() {
   VLAN=""
   SSH="no"
   VERB="no"
+  if ADMINPW=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set Odoo Admin Password" 8 58 --title "ADMIN PASSWORD" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+    echo -e "${DGN}Chosen password: ${BGN}$ADMINPW${CL}"
+  else
+    exit-script
+  fi
+
+  if DBIP=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Database IP Address" 8 58 localhost --title "DB IP" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+    echo -e "${DGN}DataBase IP Address: ${BGN}$DBIP${CL}"
+  else
+    exit-script
+  fi
+
+  if DBPORT=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase Port" 8 58 5432 --title "DB PORT" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+    echo -e "${DGN}Chosen port: ${BGN}$DBPORT${CL}"
+  else
+    exit-script
+  fi
+
+  if DBUSER=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase User" 8 58 --title "DB USER" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+    echo -e "${DGN}Chosen DB user: ${BGN}$DBUSER${CL}"
+  else
+    exit-script
+  fi
+
+  if DBPW=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase password" 8 58 --title "DB PASSWORD" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+    echo -e "${DGN}Chosen DB password: ${BGN}$DBPW${CL}"
+  else
+    exit-script
+  fi
+
+  if DBNAME=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase Name" 8 58 --title "DB NAME" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+    echo -e "${DGN}Chosen DB name: ${BGN}$DBNAME${CL}"
+  else
+    exit-script
+  fi
+
   echo_default
 }
 
@@ -86,44 +122,6 @@ function exit-script() {
   clear
   echo -e "⚠  User exited script \n"
   exit
-}
-
-function advanced_settings() {
-  if ADMINPW=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set Odoo Admin Password" 8 58 --title "ADMIN PASSWORD" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
-    echo -e "${DGN}Chosen password: ${BGN}$ADMINPW${CL}"
-  else
-    exit-script
-  fi
-
-  if DBIP=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Database IP Address" 8 58 localhost --title "DB IP" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
-    echo -e "${DGN}DataBase IP Address: ${BGN}$DBIP${CL}"
-  else
-    exit-script
-  fi
-
-  if DBPORT=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase Port" 8 58 5432 --title "DB PORT" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
-    echo -e "${DGN}Chosen port: ${BGN}$DBPORT${CL}"
-  else
-    exit-script
-  fi
-
-  if DBUSER=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase User" 8 58 --title "DB USER" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
-    echo -e "${DGN}Chosen DB user: ${BGN}$DBUSERNPW${CL}"
-  else
-    exit-script
-  fi
-
-  if DBPW=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase password" 8 58 --title "DB PASSWORD" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
-    echo -e "${DGN}Chosen DB password: ${BGN}$DBPW${CL}"
-  else
-    exit-script
-  fi
-
-  if DBNAME=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "DataBase Name" 8 58 --title "DB NAME" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
-    echo -e "${DGN}Chosen DB name: ${BGN}$DBNAME${CL}"
-  else
-    exit-script
-  fi
 }
 
 start
