@@ -88,7 +88,7 @@ function exit-script() {
   exit
 }
 
-funtion advanced_settings() {
+function advanced_settings() {
   if ADMINPW=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set Odoo Admin Password" 8 58 --title "ADMIN PASSWORD" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
     echo -e "${DGN}Chosen password: ${BGN}$ADMINPW${CL}"
   else
@@ -124,8 +124,8 @@ funtion advanced_settings() {
   else
     exit-script
   fi
-
 }
+
 start
 build_container
 description
